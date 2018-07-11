@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer" />
+    <title>form</title>
+
+    <script src="JS/jquery-3.1.1.js" ></script>
+    <script src="JS/jquery-3.1.1.min.js" ></script>
+    <script src="JS/jquery.form.js" ></script>
+</head>
+<body>
+<form id="form">
+    <p>AppKey:</p>
+    <input type="password" id="app_key" name="app_key" value="07aeed6d682079ff">
+    <br>
+    <input  class="sub-btn" id="sub" type="button" value="submit">
+</form>
+
+
+<script type="text/javascript">
+    $("#sub").click(function () {
+        var options = {
+            type:"GET",
+            url:"http://api.taokezhushou.com/api/v1/all",
+            success:showRespon,
+            dataType:"Json",
+            error:function (xhr,status,err) {
+                alert("error");
+            }
+        };
+
+        $("#form").ajaxSubmit(options);
+    });
+
+    function showRespon(responseText, statusText, xhr, $form) {
+        if(responseText.status == "0"){
+            alert(responseText.msg);
+        } else {
+            alert(responseText.msg);
+        }
+    }
+
+</script>
+
+</body>
+</html>
